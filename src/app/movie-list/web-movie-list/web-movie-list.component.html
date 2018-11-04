@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row fiche">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+        <div class="form-group">
+          <label for="title">
+            Movie's title (3 car Min)
+          </label>
+          <input type="text" class="form-control" id="title" name="title" ngModel>
+        </div>
+       <button type="submit" class="btn btn-primary">Rechercher</button>
+      </form>
+    </div>
+  </div>
+
+<h2 *ngIf="movies">Liste de films : {{ searchTitle }}</h2>
+<div *ngIf="movies" class="row">
+  <div class="col-sm-6 vignette" *ngFor="let movie of movies | sort:'Year'" (click)="viewMovie(movie.imdbID)">
+    <h3 class="text-center">{{ movie.Title }} - {{ movie.Year }}</h3>
+    <img [src]="movie.Poster">
+  </div>
+</div>

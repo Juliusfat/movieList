@@ -1,0 +1,16 @@
+<div *ngIf="movie" class="row fiche">
+  <div class="col-sm-6">
+   <img [src]="movie.Poster">
+  </div>
+  <div class="col-sm-6">
+    <h1>{{ movie.Title }} - {{ movie.Year }}</h1>
+    <h3>Director : {{ movie.Director }}</h3>
+    <p>{{ movie.Plot }}</p>
+    <p>Duration: {{ movie.Runtime}}</p>
+    <p>Actors : {{ movie.Actors }}</p>
+    <p>
+    <a class="nav-link" *ngIf="movie.Website !== 'N/A'" [href]="movie.Website" target="_blank">Site du film</a>
+    </p>
+    <button class="btn btn-info" (click)="onBack()">Retour</button>
+  </div>
+</div>
