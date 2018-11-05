@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./single-movie.component.scss']
 })
 export class SingleMovieComponent implements OnInit, OnDestroy {
-
+  searchTitle : string;
   movie : SingleMovie;
   movieSubscription : Subscription;
 
@@ -28,10 +28,14 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
     );
     const id = this.route.snapshot.params['id'];
     this.movieService.getSingleMovie(id);
+    this.route.queryParams
+      .subscribe(params => {
+        this.searchTitle = params.title;
+        });
   }
 
   onBack(){
-    this.router.navigate(['/webmovies']);
+    this.router.navigate(['/webmovies'],{ queryParams: { title: this.searchTitle }});
   }
 
   ngOnDestroy(): void {

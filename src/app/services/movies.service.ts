@@ -37,7 +37,7 @@ export class MoviesService {
   }
 
   getWebMovies(title: string) {
-    this.httpClient.get<Movie[]>('http://www.omdbapi.com/?s='+title+'&apikey=bdc8d183')
+    this.httpClient.get<Movie[]>('http://www.omdbapi.com/?s='+title+'&type=movie&apikey=bdc8d183')
         .subscribe(
             (reponse) =>{
                 this.movies = reponse['Search'];
