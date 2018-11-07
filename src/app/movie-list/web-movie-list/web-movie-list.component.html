@@ -12,10 +12,11 @@
     </div>
   </div>
 
-<h2 *ngIf="movies">Recherche sur : {{ searchTitle }}</h2>
+<h3 *ngIf="movies">Recherche sur : {{ searchTitle }}</h3>
 <div *ngIf="movies" class="row">
   <div class="col-sm-5 vignette" *ngFor="let movie of movies | sort:'Year'" (click)="viewMovie(movie.imdbID)">
     <h4 class="text-center titre-movie">{{ movie.Title }} - {{ movie.Year }}</h4>
-    <img [src]="movie.Poster">
+    <img *ngIf="movie.Poster !=='N/A'" [src]="movie.Poster">
+    <img *ngIf="movie.Poster ==='N/A'" src="/assets/images/imageFond.jpg">
   </div>
 </div>

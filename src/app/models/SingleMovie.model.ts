@@ -23,6 +23,4 @@ Year: string;
 imdbID: string;
 imdbRating: string;
 imdbVotes: string;
-
-
 }
