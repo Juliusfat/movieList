@@ -14,6 +14,7 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
   searchTitle : string;
   movie : SingleMovie;
   movieSubscription : Subscription;
+  id : string;
 
   constructor( private movieService : MoviesService,
                 private route : ActivatedRoute,
@@ -26,20 +27,23 @@ export class SingleMovieComponent implements OnInit, OnDestroy {
         console.log(this.movie);
       }
     );
-    const id = this.route.snapshot.params['id'];
-    this.movieService.getSingleMovie(id);
+    this.id = this.route.snapshot.params['id'];
+    this.movieService.getSingleMovie(this.id);
     this.route.queryParams
       .subscribe(params => {
         this.searchTitle = params.title;
         });
   }
 
-  onBack(){
+  onBack(): void{
     this.router.navigate(['/webmovies'],{ queryParams: { title: this.searchTitle }});
   }
 
   ngOnDestroy(): void {
     this.movieSubscription.unsubscribe();
-    
+  }
+
+  onMyMovie() : void{
+    this.router.navigate(['/movies','new',this.id]);
   }
 }

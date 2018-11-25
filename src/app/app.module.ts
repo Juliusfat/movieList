@@ -11,20 +11,23 @@ import { SingleMovieComponent } from './movie-list/single-movie/single-movie.com
 import { MovieFormComponent } from './movie-list/movie-form/movie-form.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthService } from './services/auth.service';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardService } from './guards/auth-guard.service';
 import { MoviesService } from './services/movies.service';
 import { Routes, RouterModule } from '@angular/router';
 import { WebMovieListComponent } from './movie-list/web-movie-list/web-movie-list.component';
 import { SortPipe } from './pipes/sort.pipe';
+import { LoginComponent } from './login/login.component';
+import { AuthentificationService } from './services/authentification.service';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes : Routes = [
-  { path : 'auth/signup', component : SignupComponent },
-  { path : 'auth/signin', component : SigninComponent },
+  { path : 'login', component : LoginComponent },
+  { path : 'register', component : RegisterComponent },
   { path : 'webmovies', canActivate : [AuthGuardService] ,component : WebMovieListComponent },
-  { path : 'movies/new', canActivate : [AuthGuardService] ,component : MovieFormComponent },
+  { path : 'movies/new/:id', canActivate : [AuthGuardService] ,component : MovieFormComponent },
   { path : 'movies/view/:id', canActivate : [AuthGuardService] ,component : SingleMovieComponent },
   { path : 'movies', canActivate : [AuthGuardService] ,component : MovieListComponent },
-  { path : '', redirectTo: 'movies', pathMatch : 'full'},
+  { path : '', redirectTo: 'webmovies', pathMatch : 'full'},
   { path : '**', redirectTo : 'movies'}
 ] 
 
@@ -38,7 +41,9 @@ const appRoutes : Routes = [
     MovieFormComponent,
     HeaderComponent,
     WebMovieListComponent,
-    SortPipe
+    LoginComponent,
+    SortPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ const appRoutes : Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, AuthGuardService, MoviesService],
+  providers: [AuthService, AuthGuardService, MoviesService, AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

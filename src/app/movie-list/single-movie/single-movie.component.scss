@@ -1,0 +1,16 @@
+button {
+    margin-right: 10px;
+}
+a{
+    color : #212E3A;
+    font-weight: bold;
+    font-size: 1.5em; 
+    &:hover{
+        color: #85A4BD;
+    }
+}
+
+.poster{
+    margin-top: 20px;
+}
+

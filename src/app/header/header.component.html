@@ -8,15 +8,18 @@
           <a routerLink="webmovies" class="nav-link">Liste de Films</a>
         </li>
     </ul>
+    <p *ngIf="lastName">
+      bienvenue {{lastName}}
+    </p>
     <ul class="nav justify-content-end">
-      <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
-        <a routerLink="auth/signup" class="nav-link">Créer un compte</a>
+      <li routerLinkActive="active" class="nav-item" *ngIf="!lastName">
+        <a routerLink="register" class="nav-link">Créer un compte</a>
       </li>
-      <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
-        <a routerLink="auth/signin" class="nav-link">Connexion</a>
+      <li routerLinkActive="active" class="nav-item" *ngIf="!lastName">
+        <a routerLink="login" class="nav-link">Connexion</a>
       </li>
-      <li class="nav-item" *ngIf="isAuth">
-        <a (click)="onSignOut()" class="nav-link" style="cursor: pointer">Déconnexion</a>
+      <li class="nav-item logout" *ngIf="lastName">
+        <a (click)="logout()" class="nav-link ">Déconnexion</a>
       </li>
     </ul>
   </div>

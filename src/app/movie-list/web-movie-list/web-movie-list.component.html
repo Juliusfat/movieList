@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <div class="row fiche">
       <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
         <div class="form-group">
@@ -10,8 +10,19 @@
        <button type="submit" class="btn btn-primary">Rechercher</button>
       </form>
     </div>
-  </div>
+  </div>-->
 
+  <div class="container">
+    <div class="row fiche">
+      <div class="form-group">
+        <label for="titre">
+          Movie's title
+        </label>
+        <input type="text" class="form-control" id="titre" placeholder="3 cars min" [formControl]="titre"> 
+      </div>
+    </div>
+  </div>
+  <h1 *ngIf="!movies">pas de film trouvé!!!</h1>
 <h3 *ngIf="movies">Recherche sur : {{ searchTitle }}</h3>
 <div *ngIf="movies" class="row">
   <div class="col-sm-5 vignette" *ngFor="let movie of movies | sort:'Year'" (click)="viewMovie(movie.imdbID)">

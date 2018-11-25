@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
+import { AuthentificationService } from './services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import * as firebase from 'firebase';
 export class AppComponent {
   title = 'movieshelves';
 
-  constructor() {
+  constructor(private authService : AuthentificationService) {
     var config = {
       apiKey: "AIzaSyDN3O4Wj7NB27HuMR7t8LSCYl9aAAl6psM",
       authDomain: "mymoviesselect.firebaseapp.com",
@@ -19,5 +20,10 @@ export class AppComponent {
       messagingSenderId: "1075314386288"
     };
     firebase.initializeApp(config);
+  }
+
+  ngOnInit(): void {
+    this.authService.bootUser();
+    
   }
 }

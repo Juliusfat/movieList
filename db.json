@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": 8,
+      "email": "lloydbray@sultrax.com",
+      "firstName": "Mckinney",
+      "lastName": "Chavez",
+      "password": "Urbana44"
+    },
+    {
+      "id": 7,
+      "email": "mckinneychavez@sultrax.com",
+      "firstName": "Chelsea",
+      "lastName": "Shields",
+      "password": "Allamuchy55"
+    },
+    {
+      "id": 7,
+      "email": "chelseashields@sultrax.com",
+      "firstName": "Gross",
+      "lastName": "Cochran",
+      "password": "Frierson54"
+    },
+    {
+      "id": 3,
+      "email": "grosscochran@sultrax.com",
+      "firstName": "Burks",
+      "lastName": "Gibbs",
+      "password": "Ironton15"
+    },
+    {
+      "id": 4,
+      "email": "burksgibbs@sultrax.com",
+      "firstName": "Vinson",
+      "lastName": "Snyder",
+      "password": "Greensburg94"
+    },
+    {
+      "id": 10,
+      "email": "vinsonsnyder@sultrax.com",
+      "firstName": "Jackson",
+      "lastName": "Savage",
+      "password": "Austinburg90"
+    },
+    {
+      "email": "juliusfat@hotmail.fr",
+      "password": "Julius59",
+      "firstName": "Cyrille",
+      "lastName": "Paillard",
+      "id": 11
+    }
+  ]
+}

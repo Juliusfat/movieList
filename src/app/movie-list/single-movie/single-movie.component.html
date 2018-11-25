@@ -1,7 +1,8 @@
 <div *ngIf="movie" class="row fiche">
-  <div class="col-sm-6">
+  <div class="col-sm-6 poster">
     <img *ngIf="movie.Poster !=='N/A'" [src]="movie.Poster">
     <img *ngIf="movie.Poster ==='N/A'" src="/assets/images/imageFond.jpg">
+    <a class="nav-link text-center" *ngIf="movie.Website !== 'N/A'" [href]="movie.Website" target="_blank">Site du film</a>
   </div>
   <div class="col-sm-6">
     <h1>{{ movie.Title }} - {{ movie.Year }}</h1>
@@ -10,9 +11,7 @@
     <p>Duration: {{ movie.Runtime}}</p>
     <p>Actors : {{ movie.Actors }}</p>
     <p>Rating : {{ movie.imdbRating}}/10</p>
-    <p>
-    <a class="nav-link" *ngIf="movie.Website !== 'N/A'" [href]="movie.Website" target="_blank">Site du film</a>
-    </p>
     <button class="btn btn-info" (click)="onBack()">Retour</button>
+    <button class="btn btn-success" (click)="onMyMovie()">Ajouter à mes films</button>
   </div>
 </div>

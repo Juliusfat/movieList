@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Movie } from 'src/app/models/Movie.model';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { debounceTime, filter, distinctUntilChanged, map  } from 'rxjs/operators';
 import { MoviesService } from 'src/app/services/movies.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./web-movie-list.component.scss']
 })
 export class WebMovieListComponent implements OnInit, OnDestroy {
-
+  
+  titre : FormControl;
   movies : Movie[];
   moviesSubscription : Subscription;
   searchTitle : string;
@@ -24,6 +26,7 @@ export class WebMovieListComponent implements OnInit, OnDestroy {
         this.movies = movies;
         console.log(this.movies);
       }
+      
     );
 
     this.route.queryParams
@@ -34,16 +37,26 @@ export class WebMovieListComponent implements OnInit, OnDestroy {
         this.moviesService.emitMovie();
         }});
         
-
+    this.titre = new FormControl();
+    this.titre.valueChanges.pipe(
+      debounceTime(500),
+      filter(v => (v.length >= 3)),
+      distinctUntilChanged()
+    ).subscribe( titre =>{
+      this.moviesService.getWebMovies(titre);
+      this.searchTitle=this.titre.value;
+    }
+    )
 
   }
 
-  onSubmit(form : NgForm){
+
+  /*onSubmit(form : NgForm){
     this.searchTitle = form.value['title'];
  
     this.moviesService.getWebMovies(this.searchTitle);
     this.moviesService.emitMovie();
-  }
+  }*/
 
   viewMovie(id : string) {
     console.log("id : " + id);
